@@ -107,6 +107,37 @@ print(textual_playoffs)
 
 
 
+---------itertuples--------------
+
+import pandas as pd
+
+def process_data(df):
+    # Add a new column to the DataFrame
+    df['Result'] = None
+
+    # Iterate over the rows of the DataFrame
+    for row in df.itertuples(index=True, name='Pandas'):
+        # Access data for each column by column name
+        val1 = row.A
+        val2 = row.B
+        val3 = row.C
+
+        # Use an if-else statement to assign a value to the new column
+        if val1 > val2:
+            df.at[row.Index, 'Result'] = 'Greater'
+        else:
+            df.at[row.Index, 'Result'] = 'Not greater'
+
+# Create a sample DataFrame
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6], 'C': [7, 8, 9]})
+
+# Call the function
+process_data(df)
+
+# Print the modified DataFrame
+print(df)
+
+
 
 
 
